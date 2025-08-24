@@ -16,6 +16,11 @@ on:
         required: false
         type: boolean
         default: false
+      debug_mode:
+        description: 'Enable debug logging for all workflows'
+        required: false
+        type: boolean
+        default: false
   push:
     branches: [ main, develop ]
   pull_request:
@@ -29,6 +34,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
     with:
       ref: ${{ github.event.inputs.ref || github.ref }}
+      debug_mode: ${{ github.event.inputs.debug_mode == 'true' }}
 
   # Build: Application Build & Validation (depends on CI)
   build:
@@ -38,6 +44,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       ref: ${{ github.event.inputs.ref || github.ref }}
+      debug_mode: ${{ github.event.inputs.debug_mode == 'true' }}
 
   # Security: Scans (runs in parallel with Build)
   security:
@@ -48,17 +55,18 @@ jobs:
     with:
       ref: ${{ github.event.inputs.ref || github.ref }}
       scan_type: 'all'
+      debug_mode: ${{ github.event.inputs.debug_mode == 'true' }}
 
-  # Deploy: Vercel Deployment (depends on Build and Security)
+    # Deploy: Vercel Deployment (depends on Build and Security)
   deploy:
     name: "Deploy: Vercel 🚀"
     needs: [build, security]
     if: >
       (github.ref == 'refs/heads/main' || github.event.inputs.ref == 'main') &&
       (
-        (!failure() && !cancelled() && 
-         (contains(github.event.inputs.run_workflows, 'deploy') || 
-          contains(github.event.inputs.run_workflows, 'all') || 
+        (!failure() && !cancelled() &&
+         (contains(github.event.inputs.run_workflows, 'deploy') ||
+          contains(github.event.inputs.run_workflows, 'all') ||
           github.event_name != 'workflow_dispatch')
         ) ||
         github.event.inputs.force_deploy == 'true'
@@ -67,6 +75,7 @@ jobs:
     with:
       ref: ${{ github.event.inputs.ref || github.ref }}
       force_deploy: ${{ github.event.inputs.force_deploy == 'true' }}
+      debug_mode: ${{ github.event.inputs.debug_mode == 'true' }}
 
   # Report Generation
   report:
@@ -76,6 +85,14 @@ jobs:
     if: always()
     
     steps:
+    - name: Setup Debug Environment
+      if: ${{ github.event.inputs.debug_mode == 'true' }}
+      run: |
+        echo "🐛 DEBUG MODE ENABLED"
+        echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+        echo "ACTIONS_RUNNER_DEBUG=true" >> $GITHUB_ENV
+        echo "Debug mode activated for detailed logging"
+        
     - name: Generate Comprehensive Report
       run: |
         echo "# 🛡️ Gatekeeper Central Report" >> $GITHUB_STEP_SUMMARY

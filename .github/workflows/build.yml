@@ -7,6 +7,11 @@ on:
         description: 'Git ref to build'
         required: false
         default: 'main'
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
   workflow_call:
     inputs:
       ref:
@@ -14,6 +19,11 @@ on:
         required: false
         type: string
         default: 'main'
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -21,6 +31,16 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Setup Debug Environment
+      if: ${{ inputs.debug_mode == true }}
+      run: |
+        echo "🐛 BUILD DEBUG MODE ENABLED"
+        echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+        echo "ACTIONS_RUNNER_DEBUG=true" >> $GITHUB_ENV
+        echo "NPM_CONFIG_LOGLEVEL=verbose" >> $GITHUB_ENV
+        echo "NEXT_DEBUG=true" >> $GITHUB_ENV
+        echo "Debug mode activated for Build workflow"
+        
     - name: Checkout code
       uses: actions/checkout@v4
       with:

@@ -11,6 +11,7 @@
 | **Build & Security Only** | Actions → Gatekeeper → Run workflow → `run_workflows: build,security` |
 | **Force Deploy** | Actions → Gatekeeper → Run workflow → `force_deploy: true` |
 | **Test Branch** | Actions → Gatekeeper → Run workflow → `ref: feature-branch` |
+| **🐛 Enable Debug Mode** | Actions → Gatekeeper → Run workflow → `debug_mode: true` |
 
 ### Individual Workflows
 
@@ -73,6 +74,24 @@ graph LR
     style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
 ```
 
+## 🐛 Debug Mode
+
+### Enable Debug Logging
+
+| Method | Command |
+|--------|---------|
+| **Gatekeeper (All Workflows)** | Set `debug_mode: true` in workflow dispatch |
+| **Individual Workflow** | Set `debug_mode: true` in each workflow |
+| **Environment Variables** | `ACTIONS_STEP_DEBUG=true` & `ACTIONS_RUNNER_DEBUG=true` |
+
+### Debug Features
+
+- ✅ **Verbose npm logging** (`NPM_CONFIG_LOGLEVEL=verbose`)
+- ✅ **Next.js debug mode** (`NEXT_DEBUG=true`)
+- ✅ **Vercel debug output** (`VERCEL_DEBUG=1`)
+- ✅ **Step-by-step execution** (GitHub Actions debug)
+- ✅ **Detailed error messages** (Enhanced logging)
+
 ## 🚨 Emergency Actions
 
 | Issue | Solution |
@@ -81,6 +100,7 @@ graph LR
 | **Need urgent deploy** | Use `force_deploy: true` |
 | **Test specific fix** | Use `ref: commit-hash` |
 | **Skip security** | Use `run_workflows: ci,build,deploy` |
+| **Debug workflow issues** | Use `debug_mode: true` |
 | **Security vulnerabilities** | Run `./scripts/security-update.sh` |
 | **Package updates needed** | `npm install next@latest axios@latest` |
 
