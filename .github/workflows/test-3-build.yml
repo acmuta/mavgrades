@@ -68,7 +68,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: nextjs-build-${{ github.run_id }}
+        name: test3-build-${{ github.run_id }}-${{ github.run_attempt }}
         path: |
           .next/
           public/

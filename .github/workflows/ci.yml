@@ -192,13 +192,3 @@ jobs:
         
         echo "✅ Build validation completed successfully!"
         echo "🎉 CI pipeline tests completed successfully!"
-        
-    - name: Upload build artifacts (optional)
-      uses: actions/upload-artifact@v4
-      with:
-        name: nextjs-build-${{ github.run_id }}
-        path: |
-          .next/
-          public/
-        retention-days: 1
-      if: always()

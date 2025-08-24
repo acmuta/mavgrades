@@ -61,10 +61,10 @@ The **gatekeeper.yml** is the central orchestrator that manages all CI/CD operat
 1. **Core Tests** (Sequential):
    - `test-1-lint.yml` → Code linting and style checks
    - `test-2-typecheck.yml` → TypeScript type validation
-   - `test-3-build.yml` → Application build verification
+   - `test-3-build.yml` → Application build verification + artifact upload
 
 2. **Extended Pipeline** (Parallel after core tests):
-   - `ci.yml` → Full CI pipeline with comprehensive testing
+   - `ci.yml` → Full CI pipeline with integrated build validation
    - `security.yml` → Security scans and dependency audits
 
 3. **Deployment** (After CI + Security):
