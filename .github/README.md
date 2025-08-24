@@ -281,9 +281,13 @@ If security scans fail due to vulnerabilities:
    ```
 3. **Manual package updates**:
    ```bash
-   # Update specific vulnerable packages
-   npm install next@latest axios@latest
-   npm update  # Update all packages
+   # Update specific vulnerable packages (versions already updated)
+   npm install axios@^1.8.2 next@^14.2.30
+   
+   # Or regenerate lock file after updating package.json
+   rm package-lock.json
+   npm install --package-lock-only
+   npm ci
    ```
 4. **Test after updates**:
    ```bash
