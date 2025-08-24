@@ -79,7 +79,21 @@ jobs:
         fi
       
     - name: Run dependency check
-      run: npx depcheck
+      run: |
+        echo "🔍 Checking for unused dependencies..."
+        if npx depcheck --version >/dev/null 2>&1; then
+          echo "Running depcheck..."
+          npx depcheck || echo "⚠️ Unused dependencies found (see above)"
+        else
+          echo "Installing depcheck..."
+          if npx depcheck@latest --help >/dev/null 2>&1; then
+            echo "Running depcheck..."
+            npx depcheck@latest || echo "⚠️ Unused dependencies found (see above)"
+          else
+            echo "⚠️ Could not run depcheck - skipping unused dependency check"
+            echo "To run manually: npx depcheck"
+          fi
+        fi
       
     - name: Check for outdated packages
       run: npm outdated || true

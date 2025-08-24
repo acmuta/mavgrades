@@ -86,7 +86,7 @@ The **gatekeeper.yml** is the central orchestrator that manages all CI/CD operat
 | `test-1-lint.yml` | 📝 ESLint code linting | Called by gatekeeper | None |
 | `test-2-typecheck.yml` | 🔍 TypeScript validation | Called by gatekeeper | test-1 |
 | `test-3-build.yml` | 🏗️ Next.js build verification | Called by gatekeeper | test-2 |
-| `ci.yml` | 🔄 Full CI pipeline | Called by gatekeeper | test-3 |
+| `ci.yml` | 🔄 Full CI pipeline with build validation | Called by gatekeeper | test-3 |
 | `security.yml` | 🔒 Security & dependency scans | Called by gatekeeper | test-3 |
 | `deploy.yml` | 🚀 Vercel deployment | Called by gatekeeper | ci + security |
 

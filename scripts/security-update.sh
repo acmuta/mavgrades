@@ -22,28 +22,19 @@ else
 fi
 
 echo ""
-echo "🛠️ Recommended manual updates for known vulnerabilities:"
+echo "🛠️ Package status (as of latest update):"
 echo ""
 
 # Update critical packages
-echo "1. Updating Next.js (fixes DoS and cache poisoning):"
-echo "   npm install next@latest"
+echo "✅ Next.js: Updated to 14.2.30 (security patches applied)"
+echo "✅ Axios: Updated to 1.8.2 (SSRF vulnerability fixed)"
+echo "✅ Unused dependencies: Cleaned up (better-sqlite3, csv-parser, etc.)"
 echo ""
 
-echo "2. Updating axios (fixes SSRF vulnerability):"
-echo "   npm install axios@latest"
-echo ""
-
-echo "3. Updating form-data (fixes unsafe random function):"
-echo "   npm install form-data@latest"
-echo ""
-
-echo "4. Updating @babel/runtime (fixes RegExp complexity):"
-echo "   npm install @babel/runtime@latest"
-echo ""
-
-echo "5. For brace-expansion and tar-fs, update parent packages:"
-echo "   npm update"
+echo "🔄 To update to latest versions:"
+echo "1. Next.js: npm install next@latest"
+echo "2. Axios: npm install axios@latest"
+echo "3. All packages: npm update"
 echo ""
 
 echo "🚀 To apply all updates automatically (may break compatibility):"
