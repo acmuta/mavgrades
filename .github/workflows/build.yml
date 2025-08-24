@@ -1,0 +1,87 @@
+name: Build - Application Build & Validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Git ref to build'
+        required: false
+        default: 'main'
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to build'
+        required: false
+        type: string
+        default: 'main'
+
+jobs:
+  build:
+    name: "🏗️ Build & Validate"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref || github.ref }}
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: Install dependencies (single attempt)
+      run: npm ci --prefer-offline --no-audit 2>/dev/null || npm install --prefer-offline --no-audit
+      
+    - name: Build Next.js application
+      run: |
+        echo "🏗️ Building Next.js application..."
+        npm run build
+        echo "✅ Build completed successfully!"
+      
+    - name: Validate build artifacts
+      run: |
+        echo "🔍 Validating build structure..."
+        if [ ! -d ".next" ]; then
+          echo "❌ Build failed - .next directory not found"
+          exit 1
+        fi
+        
+        echo "✅ .next directory found"
+        echo "📋 Build artifacts:"
+        ls -la .next/
+        
+        # Check for essential build files
+        if [ -f ".next/BUILD_ID" ]; then
+          echo "✅ BUILD_ID found: $(cat .next/BUILD_ID)"
+        else
+          echo "⚠️ BUILD_ID missing, but build completed"
+        fi
+        
+        # Check for static files
+        if [ -d ".next/static" ]; then
+          echo "✅ Static assets directory found"
+        fi
+        
+        # Check for server files
+        if [ -d ".next/server" ]; then
+          echo "✅ Server files found"
+        fi
+        
+        echo "✅ Build validation completed successfully!"
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts-${{ github.run_id }}-${{ github.run_attempt }}
+        path: |
+          .next/
+          public/
+        retention-days: 1
+        
+    - name: Build Summary
+      run: |
+        echo "🎉 Build process completed successfully!"
+        echo "📦 Artifacts uploaded and ready for deployment"
