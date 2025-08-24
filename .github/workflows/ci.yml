@@ -1,52 +1,31 @@
-name: CI/CD Pipeline
+name: CI - Full Pipeline
 
 on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Git ref to test'
+        required: false
+        default: 'main'
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to test'
+        required: false
+        type: string
+        default: 'main'
 
 jobs:
-  lint-and-test:
+  # Stage 1: Setup and Dependencies
+  setup:
+    name: "🔧 Setup & Dependencies"
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [20.x]
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Run linter
-      run: npm run lint
-      
-    - name: Build application
-      run: npm run build
-      
-    - name: Check build artifacts
-      run: |
-        if [ ! -d ".next" ]; then
-          echo "Build failed - .next directory not found"
-          exit 1
-        fi
-        echo "Build successful!"
-
-  type-check:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+        ref: ${{ inputs.ref || github.ref }}
       
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -54,8 +33,170 @@ jobs:
         node-version: '20.x'
         cache: 'npm'
         
-    - name: Install dependencies
-      run: npm ci
+    - name: Install dependencies with retry
+      run: |
+        for i in {1..3}; do
+          echo "Attempt $i to install dependencies..."
+          if npm ci --prefer-offline --no-audit; then
+            echo "Dependencies installed successfully!"
+            break
+          else
+            echo "Attempt $i failed, retrying in 10 seconds..."
+            sleep 10
+          fi
+          if [ $i -eq 3 ]; then
+            echo "All attempts failed"
+            exit 1
+          fi
+        done
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          node_modules
+          .next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        restore-keys: |
+          ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+  # Stage 2: Linting (depends on setup)
+  lint:
+    name: "📝 Code Linting"
+    runs-on: ubuntu-latest
+    needs: setup
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref || github.ref }}
       
-    - name: Type check
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: Restore dependencies cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          node_modules
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        
+    - name: Install dependencies (if cache miss)
+      run: npm ci --prefer-offline --no-audit
+      
+    - name: Run ESLint
+      run: npm run lint
+
+  # Stage 3: Type Checking (depends on lint)
+  type-check:
+    name: "🔍 Type Checking"
+    runs-on: ubuntu-latest
+    needs: lint
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref || github.ref }}
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: Restore dependencies cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          node_modules
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        
+    - name: Install dependencies (if cache miss)
+      run: npm ci --prefer-offline --no-audit
+      
+    - name: TypeScript type check
       run: npx tsc --noEmit
+
+  # Stage 4: Build (depends on type-check)
+  build:
+    name: "🏗️ Build Application"
+    runs-on: ubuntu-latest
+    needs: type-check
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref || github.ref }}
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: Restore dependencies cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          node_modules
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        
+    - name: Install dependencies (if cache miss)
+      run: npm ci --prefer-offline --no-audit
+      
+    - name: Build Next.js application
+      run: npm run build
+      
+    - name: Verify build artifacts
+      run: |
+        if [ ! -d ".next" ]; then
+          echo "❌ Build failed - .next directory not found"
+          exit 1
+        fi
+        echo "✅ Build successful - artifacts created!"
+        ls -la .next/
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: nextjs-build
+        path: |
+          .next/
+          public/
+        retention-days: 1
+
+  # Stage 5: Final Validation (depends on build)
+  validate:
+    name: "✅ Final Validation"
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: nextjs-build
+        
+    - name: Validate build structure
+      run: |
+        echo "🔍 Validating build structure..."
+        if [ ! -d ".next" ]; then
+          echo "❌ .next directory missing"
+          exit 1
+        fi
+        if [ ! -f ".next/BUILD_ID" ]; then
+          echo "❌ BUILD_ID missing"
+          exit 1
+        fi
+        echo "✅ All validations passed!"
+        echo "🎉 Gatekeeper tests completed successfully!"

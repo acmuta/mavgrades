@@ -5,6 +5,32 @@ on:
     # Run every Monday at 9 AM UTC
     - cron: '0 9 * * 1'
   workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Git ref to scan'
+        required: false
+        default: 'main'
+      scan_type:
+        description: 'Type of security scan to run'
+        required: false
+        type: choice
+        options:
+          - 'all'
+          - 'audit-only'
+          - 'codeql-only'
+        default: 'all'
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to scan'
+        required: false
+        type: string
+        default: 'main'
+      scan_type:
+        description: 'Type of security scan to run'
+        required: false
+        type: string
+        default: 'all'
 
 jobs:
   security-audit:
@@ -13,6 +39,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref || github.ref }}
       
     - name: Setup Node.js
       uses: actions/setup-node@v4
