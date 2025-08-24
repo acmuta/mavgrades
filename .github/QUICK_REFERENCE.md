@@ -85,4 +85,3 @@ graph LR
 | **Package updates needed** | `npm install next@latest axios@latest` |
 
 ---
-💡 **Tip**: Check the full README.md for detailed documentation and troubleshooting.
