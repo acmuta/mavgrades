@@ -6,8 +6,9 @@
 
 | Action | Steps |
 |--------|-------|
-| **Run All Tests** | Actions → Gatekeeper → Run workflow → `run_workflows: all` |
-| **Core Tests Only** | Actions → Gatekeeper → Run workflow → `run_workflows: test1,test2,test3` |
+| **Run All Workflows** | Actions → Gatekeeper → Run workflow → `run_workflows: all` |
+| **Code Quality Only** | Actions → Gatekeeper → Run workflow → `run_workflows: ci` |
+| **Build & Security Only** | Actions → Gatekeeper → Run workflow → `run_workflows: build,security` |
 | **Force Deploy** | Actions → Gatekeeper → Run workflow → `force_deploy: true` |
 | **Test Branch** | Actions → Gatekeeper → Run workflow → `ref: feature-branch` |
 
@@ -15,25 +16,23 @@
 
 | Workflow | Purpose | Manual Trigger |
 |----------|---------|----------------|
-| `test-1-lint.yml` | 📝 Linting | Actions → "Test-1 Linting" |
-| `test-2-typecheck.yml` | 🔍 Type Check | Actions → "Test-2 Type Check" |
-| `test-3-build.yml` | 🏗️ Build | Actions → "Test-3 Build" |
-| `ci.yml` | 🔄 Full CI | Actions → "CI - Full Pipeline" |
+| `ci.yml` | 🔍 Linting & Type Check | Actions → "CI - Linting & Type Checking" |
+| `build.yml` | 🏗️ Build & Validate | Actions → "Build - Application Build & Validation" |
 | `security.yml` | 🔒 Security | Actions → "Security & Dependencies" |
-| `deploy.yml` | 🚀 Deploy | Actions → "Deploy to Vercel" |
+| `deploy.yml` | 🚀 Deploy | Actions → "Deploy - Vercel Deployment" |
 
 ## 📊 Status Arrays
 
 ```json
-// Core Tests
-["PASSED", "PASSED", "PASSED"]     // ✅ All core tests passed
-["FAILED", "SKIPPED", "SKIPPED"]   // ❌ Linting failed
-["PASSED", "FAILED", "SKIPPED"]    // ❌ Type check failed  
-["PASSED", "PASSED", "FAILED"]     // ❌ Build failed
+// Pipeline Status
+["PASSED", "PASSED", "PASSED", "PASSED"]  // ✅ All workflows passed
+["FAILED", "SKIPPED", "SKIPPED", "SKIPPED"] // ❌ CI failed
+["PASSED", "FAILED", "SKIPPED", "SKIPPED"]  // ❌ Build failed
+["PASSED", "PASSED", "FAILED", "SKIPPED"]   // ❌ Security failed
+["PASSED", "PASSED", "PASSED", "FAILED"]    // ❌ Deploy failed
 
-// Full Pipeline  
-["PASSED", "PASSED", "PASSED", "PASSED", "PASSED", "PASSED"]
-// test1    test2     test3     ci      security  deploy
+// Workflow Order
+//  ci       build     security  deploy
 ```
 
 ## ⚙️ Required Secrets
@@ -57,17 +56,17 @@ npm run build        # Check build
 ## 🛡️ Gatekeeper Flow
 
 ```
-Push/PR → Gatekeeper → Test-1 → Test-2 → Test-3 → CI & Security → Deploy → Report
+Push/PR → Gatekeeper → CI → Build & Security (parallel) → Deploy → Report
 ```
 
 ## 🚨 Emergency Actions
 
 | Issue | Solution |
 |-------|----------|
-| **All tests failing** | Run individual workflows to isolate |
+| **All workflows failing** | Run individual workflows to isolate |
 | **Need urgent deploy** | Use `force_deploy: true` |
 | **Test specific fix** | Use `ref: commit-hash` |
-| **Skip security** | Use `run_workflows: test1,test2,test3,ci,deploy` |
+| **Skip security** | Use `run_workflows: ci,build,deploy` |
 | **Security vulnerabilities** | Run `./scripts/security-update.sh` |
 | **Package updates needed** | `npm install next@latest axios@latest` |
 

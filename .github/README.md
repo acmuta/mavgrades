@@ -56,26 +56,26 @@ graph TD
 
 The **gatekeeper.yml** is the central orchestrator that manages all CI/CD operations:
 
-### Sequential Execution Flow
+### Streamlined Execution Flow
 
-1. **Core Tests** (Sequential):
-   - `test-1-lint.yml` → Code linting and style checks
-   - `test-2-typecheck.yml` → TypeScript type validation
-   - `test-3-build.yml` → Application build verification + artifact upload
+1. **Code Quality** (First):
+   - `ci.yml` → ESLint linting + TypeScript type checking
 
-2. **Extended Pipeline** (Parallel after core tests):
-   - `ci.yml` → Full CI pipeline with integrated build validation
+2. **Build & Security** (Parallel after code quality):
+   - `build.yml` → Next.js build + validation + artifact upload
    - `security.yml` → Security scans and dependency audits
 
-3. **Deployment** (After CI + Security):
+3. **Deployment** (After build + security):
    - `deploy.yml` → Vercel deployment (main branch only)
 
 ### Key Features
 
-- ✅ **Sequential Core Tests** - Each must pass before the next begins
-- ✅ **Parallel Extended Pipeline** - CI and Security run simultaneously
+- ✅ **Streamlined Architecture** - No duplicate setup code across workflows
+- ✅ **Single Responsibility** - Each workflow has one focused purpose
+- ✅ **Optimized Dependencies** - Single npm install per workflow
+- ✅ **Parallel Execution** - Build and Security run simultaneously after CI
 - ✅ **Failure Stops Pipeline** - Any failure prevents dependent workflows
-- ✅ **Comprehensive Reporting** - Multiple report formats available
+- ✅ **Comprehensive Reporting** - Clean array format: `[ci, build, security, deploy]`
 - ✅ **Flexible Execution** - Run specific workflows or all workflows
 
 ## 📁 Workflow Files
@@ -83,12 +83,10 @@ The **gatekeeper.yml** is the central orchestrator that manages all CI/CD operat
 | File | Purpose | Trigger | Dependencies |
 |------|---------|---------|--------------|
 | `gatekeeper.yml` | 🛡️ Central orchestrator | Push, PR, Manual | None |
-| `test-1-lint.yml` | 📝 ESLint code linting | Called by gatekeeper | None |
-| `test-2-typecheck.yml` | 🔍 TypeScript validation | Called by gatekeeper | test-1 |
-| `test-3-build.yml` | 🏗️ Next.js build verification | Called by gatekeeper | test-2 |
-| `ci.yml` | 🔄 Full CI pipeline with build validation | Called by gatekeeper | test-3 |
-| `security.yml` | 🔒 Security & dependency scans | Called by gatekeeper | test-3 |
-| `deploy.yml` | 🚀 Vercel deployment | Called by gatekeeper | ci + security |
+| `ci.yml` | 🔍 Linting & type checking | Called by gatekeeper | None |
+| `build.yml` | 🏗️ Build & validation + artifacts | Called by gatekeeper | ci |
+| `security.yml` | 🔒 Security & dependency scans | Called by gatekeeper | ci |
+| `deploy.yml` | 🚀 Vercel deployment only | Called by gatekeeper | build + security |
 
 ### Individual Workflow Capabilities
 
@@ -96,7 +94,8 @@ All workflows support:
 - ✅ **Manual triggering** via `workflow_dispatch`
 - ✅ **Custom Git ref** specification (branch/tag/commit)
 - ✅ **Standalone execution** independent of gatekeeper
-- ✅ **Network retry logic** for npm connectivity issues
+- ✅ **Single dependency installation** (no redundant downloads)
+- ✅ **Optimized performance** with focused responsibilities
 
 ## 🚀 Usage Examples
 
@@ -124,14 +123,14 @@ All workflows support:
 
 #### Run Specific Workflows
 ```yaml
-# Core tests only
-run_workflows: "test1,test2,test3"
+# Code quality only
+run_workflows: "ci"
 
-# CI and Security only
-run_workflows: "ci,security"
+# Build and security only
+run_workflows: "build,security"
 
 # Everything except deployment
-run_workflows: "test1,test2,test3,ci,security"
+run_workflows: "ci,build,security"
 
 # Force deployment even if tests fail
 force_deploy: true
@@ -152,32 +151,36 @@ ref: "v1.2.3"
 ### Individual Workflow Execution
 
 ```bash
-# Run only CI pipeline
-# Actions → "CI - Full Pipeline" → Run workflow
+# Run only CI (linting & type checking)
+# Actions → "CI - Linting & Type Checking" → Run workflow
+
+# Run only build
+# Actions → "Build - Application Build & Validation" → Run workflow
 
 # Run only security scans
 # Actions → "Security & Dependencies" → Run workflow
 
 # Run only deployment
-# Actions → "Deploy to Vercel" → Run workflow
+# Actions → "Deploy - Vercel Deployment" → Run workflow
 ```
 
 ## 📊 Reporting System
 
-The gatekeeper generates comprehensive reports in multiple formats:
+The gatekeeper generates comprehensive reports in a clean array format:
 
-### Core Tests Array
+### Pipeline Array
 ```json
-["PASSED", "PASSED", "PASSED"]
-["FAILED", "SKIPPED", "SKIPPED"] 
-["PASSED", "FAILED", "SKIPPED"]
-["PASSED", "PASSED", "FAILED"]
+["PASSED", "PASSED", "PASSED", "PASSED"]
+//  ci       build     security  deploy
 ```
 
-### Full Pipeline Array
+### Example Status Combinations
 ```json
-["PASSED", "PASSED", "PASSED", "PASSED", "PASSED", "PASSED"]
-// test1    test2     test3     ci      security  deploy
+["PASSED", "PASSED", "PASSED", "PASSED"]  // ✅ Full success
+["FAILED", "SKIPPED", "SKIPPED", "SKIPPED"] // ❌ CI failed
+["PASSED", "FAILED", "SKIPPED", "SKIPPED"]  // ❌ Build failed
+["PASSED", "PASSED", "FAILED", "SKIPPED"]   // ❌ Security failed
+["PASSED", "PASSED", "PASSED", "FAILED"]    // ❌ Deploy failed
 ```
 
 ### Status Values
