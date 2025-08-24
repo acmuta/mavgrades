@@ -1,0 +1,203 @@
+name: 🛡️ Gatekeeper - Central Orchestrator
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Git ref to test (branch/tag/commit)'
+        required: false
+        default: 'main'
+      run_workflows:
+        description: 'Workflows to run'
+        required: false
+        default: 'all'
+      force_deploy:
+        description: 'Force deployment even if tests fail'
+        required: false
+        type: boolean
+        default: false
+      debug_mode:
+        description: 'Enable debug logging for all workflows'
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # CI: Linting & Type Checking
+  ci:
+    name: "CI: Lint & Type Check 🔍"
+    if: ${{ contains(github.event.inputs.run_workflows, 'ci') || contains(github.event.inputs.run_workflows, 'all') || github.event_name != 'workflow_dispatch' }}
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref: ${{ github.event.inputs.ref || github.ref }}
+      debug_mode: ${{ github.event.inputs.debug_mode == 'true' }}
+
+  # Build: Application Build & Validation (depends on CI)
+  build:
+    name: "Build: App & Validate 🏗️"
+    needs: ci
+    if: ${{ !failure() && !cancelled() && (contains(github.event.inputs.run_workflows, 'build') || contains(github.event.inputs.run_workflows, 'all') || github.event_name != 'workflow_dispatch') }}
+    uses: ./.github/workflows/build.yml
+    with:
+      ref: ${{ github.event.inputs.ref || github.ref }}
+      debug_mode: ${{ github.event.inputs.debug_mode == 'true' }}
+
+  # Security: Scans (runs in parallel with Build)
+  security:
+    name: "Security: Scans 🔒"
+    needs: ci
+    if: ${{ !failure() && !cancelled() && (contains(github.event.inputs.run_workflows, 'security') || contains(github.event.inputs.run_workflows, 'all') || github.event_name != 'workflow_dispatch') }}
+    uses: ./.github/workflows/security.yml
+    with:
+      ref: ${{ github.event.inputs.ref || github.ref }}
+      scan_type: 'all'
+      debug_mode: ${{ github.event.inputs.debug_mode == 'true' }}
+
+    # Deploy: Vercel Deployment (depends on Build and Security)
+  deploy:
+    name: "Deploy: Vercel 🚀"
+    needs: [build, security]
+    if: >
+      (github.ref == 'refs/heads/main' || github.event.inputs.ref == 'main') &&
+      (
+        (!failure() && !cancelled() &&
+         (contains(github.event.inputs.run_workflows, 'deploy') ||
+          contains(github.event.inputs.run_workflows, 'all') ||
+          github.event_name != 'workflow_dispatch')
+        ) ||
+        github.event.inputs.force_deploy == 'true'
+      )
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: ${{ github.event.inputs.ref || github.ref }}
+      force_deploy: ${{ github.event.inputs.force_deploy == 'true' }}
+      debug_mode: ${{ github.event.inputs.debug_mode == 'true' }}
+
+  # Report Generation
+  report:
+    name: "📊 Gatekeeper Report"
+    runs-on: ubuntu-latest
+    needs: [ci, build, security, deploy]
+    if: always()
+    
+    steps:
+    - name: Setup Debug Environment
+      if: ${{ github.event.inputs.debug_mode == 'true' }}
+      run: |
+        echo "🐛 DEBUG MODE ENABLED"
+        echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+        echo "ACTIONS_RUNNER_DEBUG=true" >> $GITHUB_ENV
+        echo "Debug mode activated for detailed logging"
+        
+    - name: Generate Comprehensive Report
+      run: |
+        echo "# 🛡️ Gatekeeper Central Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## Workflow Results Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # CI Result
+        if [ "${{ needs.ci.result }}" == "success" ]; then
+          echo "- ✅ **CI (Lint & Type Check)**: PASSED" >> $GITHUB_STEP_SUMMARY
+          CI_STATUS="PASSED"
+        elif [ "${{ needs.ci.result }}" == "failure" ]; then
+          echo "- ❌ **CI (Lint & Type Check)**: FAILED" >> $GITHUB_STEP_SUMMARY
+          CI_STATUS="FAILED"
+        elif [ "${{ needs.ci.result }}" == "skipped" ]; then
+          echo "- ⏭️ **CI (Lint & Type Check)**: SKIPPED" >> $GITHUB_STEP_SUMMARY
+          CI_STATUS="SKIPPED"
+        else
+          echo "- ⏸️ **CI (Lint & Type Check)**: CANCELLED" >> $GITHUB_STEP_SUMMARY
+          CI_STATUS="CANCELLED"
+        fi
+        
+        # Build Result
+        if [ "${{ needs.build.result }}" == "success" ]; then
+          echo "- ✅ **Build (App & Validate)**: PASSED" >> $GITHUB_STEP_SUMMARY
+          BUILD_STATUS="PASSED"
+        elif [ "${{ needs.build.result }}" == "failure" ]; then
+          echo "- ❌ **Build (App & Validate)**: FAILED" >> $GITHUB_STEP_SUMMARY
+          BUILD_STATUS="FAILED"
+        elif [ "${{ needs.build.result }}" == "skipped" ]; then
+          echo "- ⏭️ **Build (App & Validate)**: SKIPPED" >> $GITHUB_STEP_SUMMARY
+          BUILD_STATUS="SKIPPED"
+        else
+          echo "- ⏸️ **Build (App & Validate)**: CANCELLED" >> $GITHUB_STEP_SUMMARY
+          BUILD_STATUS="CANCELLED"
+        fi
+        
+
+        
+        # Security Result
+        if [ "${{ needs.security.result }}" == "success" ]; then
+          echo "- ✅ **Security (Scans)**: PASSED" >> $GITHUB_STEP_SUMMARY
+          SECURITY_STATUS="PASSED"
+        elif [ "${{ needs.security.result }}" == "failure" ]; then
+          echo "- ❌ **Security (Scans)**: FAILED" >> $GITHUB_STEP_SUMMARY
+          SECURITY_STATUS="FAILED"
+        elif [ "${{ needs.security.result }}" == "skipped" ]; then
+          echo "- ⏭️ **Security (Scans)**: SKIPPED" >> $GITHUB_STEP_SUMMARY
+          SECURITY_STATUS="SKIPPED"
+        else
+          echo "- ⏸️ **Security (Scans)**: CANCELLED" >> $GITHUB_STEP_SUMMARY
+          SECURITY_STATUS="CANCELLED"
+        fi
+        
+        # Deploy Result
+        if [ "${{ needs.deploy.result }}" == "success" ]; then
+          echo "- ✅ **Deploy (Vercel)**: PASSED" >> $GITHUB_STEP_SUMMARY
+          DEPLOY_STATUS="PASSED"
+        elif [ "${{ needs.deploy.result }}" == "failure" ]; then
+          echo "- ❌ **Deploy (Vercel)**: FAILED" >> $GITHUB_STEP_SUMMARY
+          DEPLOY_STATUS="FAILED"
+        elif [ "${{ needs.deploy.result }}" == "skipped" ]; then
+          echo "- ⏭️ **Deploy (Vercel)**: SKIPPED" >> $GITHUB_STEP_SUMMARY
+          DEPLOY_STATUS="SKIPPED"
+        else
+          echo "- ⏸️ **Deploy (Vercel)**: CANCELLED" >> $GITHUB_STEP_SUMMARY
+          DEPLOY_STATUS="CANCELLED"
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## Array Format Reports" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Pipeline Array:" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+        echo "[\"$CI_STATUS\", \"$BUILD_STATUS\", \"$SECURITY_STATUS\", \"$DEPLOY_STATUS\"]" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        
+        # Console output
+        echo "🛡️ GATEKEEPER CENTRAL REPORT"
+        echo "============================"
+        echo "CI (Lint & Type Check): $CI_STATUS"
+        echo "Build (App & Validate): $BUILD_STATUS" 
+        echo "Security (Scans): $SECURITY_STATUS"
+        echo "Deploy (Vercel): $DEPLOY_STATUS"
+        echo ""
+        echo "Pipeline Array: [$CI_STATUS, $BUILD_STATUS, $SECURITY_STATUS, $DEPLOY_STATUS]"
+        
+        # Set overall status
+        if [[ "$CI_STATUS" == "PASSED" && "$BUILD_STATUS" == "PASSED" ]]; then
+          echo "🎉 CORE PIPELINE PASSED!"
+          if [[ "$SECURITY_STATUS" == "PASSED" ]]; then
+            if [[ "$DEPLOY_STATUS" == "PASSED" || "$DEPLOY_STATUS" == "SKIPPED" ]]; then
+              echo "🚀 FULL GATEKEEPER SUCCESS!"
+              echo "GATEKEEPER_STATUS=SUCCESS" >> $GITHUB_OUTPUT
+            else
+              echo "⚠️ DEPLOYMENT FAILED"
+              echo "GATEKEEPER_STATUS=DEPLOY_FAILED" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "⚠️ SECURITY FAILED"
+            echo "GATEKEEPER_STATUS=SECURITY_FAILED" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "🚫 CORE PIPELINE FAILED - GATEKEEPER FAILED!"
+          echo "GATEKEEPER_STATUS=FAILED" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+      id: report

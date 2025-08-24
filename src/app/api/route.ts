@@ -2,7 +2,7 @@ type Params = {
   team: string;
 };
 
-export async function GET(request: Request, context: { params: Params }) {
+export async function GET(request: Request) {
   try {
     //TODO: Add more specific route information
     return Response.json({

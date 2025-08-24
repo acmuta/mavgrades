@@ -1,0 +1,141 @@
+name: Security & Dependencies
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Git ref to scan'
+        required: false
+        default: 'main'
+      scan_type:
+        description: 'Type of security scan to run'
+        required: false
+        type: choice
+        options:
+          - 'all'
+          - 'audit-only'
+          - 'codeql-only'
+        default: 'all'
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to scan'
+        required: false
+        type: string
+        default: 'main'
+      scan_type:
+        description: 'Type of security scan to run'
+        required: false
+        type: string
+        default: 'all'
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Setup Debug Environment
+      if: ${{ inputs.debug_mode == true }}
+      run: |
+        echo "🐛 SECURITY DEBUG MODE ENABLED"
+        echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+        echo "ACTIONS_RUNNER_DEBUG=true" >> $GITHUB_ENV
+        echo "NPM_CONFIG_LOGLEVEL=verbose" >> $GITHUB_ENV
+        echo "Debug mode activated for Security workflow"
+        
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref || github.ref }}
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci --prefer-offline --no-audit 2>/dev/null || npm install --prefer-offline --no-audit
+      
+    - name: Run security audit
+      run: |
+        echo "🔒 Running security audit..."
+        npm audit --audit-level high --json > audit-results.json || true
+        
+        # Check if there are any high/critical vulnerabilities
+        HIGH_VULNS=$(jq '.metadata.vulnerabilities.high // 0' audit-results.json)
+        CRITICAL_VULNS=$(jq '.metadata.vulnerabilities.critical // 0' audit-results.json)
+        
+        echo "High vulnerabilities: $HIGH_VULNS"
+        echo "Critical vulnerabilities: $CRITICAL_VULNS"
+        
+        # Display human-readable report
+        npm audit --audit-level high || echo "⚠️ Vulnerabilities found - see details above"
+        
+        # Only fail on critical vulnerabilities for now
+        if [ "$CRITICAL_VULNS" -gt 0 ]; then
+          echo "❌ Critical vulnerabilities found! Please update packages."
+          echo "Run 'npm audit fix' or manually update vulnerable packages."
+          exit 1
+        elif [ "$HIGH_VULNS" -gt 0 ]; then
+          echo "⚠️ High-level vulnerabilities found but not failing build."
+          echo "Consider updating packages when possible."
+        else
+          echo "✅ No high or critical vulnerabilities found!"
+        fi
+      
+    - name: Run dependency check
+      run: |
+        echo "🔍 Checking for unused dependencies..."
+        if npx depcheck --version >/dev/null 2>&1; then
+          echo "Running depcheck..."
+          npx depcheck || echo "⚠️ Unused dependencies found (see above)"
+        else
+          echo "Installing depcheck..."
+          if npx depcheck@latest --help >/dev/null 2>&1; then
+            echo "Running depcheck..."
+            npx depcheck@latest || echo "⚠️ Unused dependencies found (see above)"
+          else
+            echo "⚠️ Could not run depcheck - skipping unused dependency check"
+            echo "To run manually: npx depcheck"
+          fi
+        fi
+      
+    - name: Check for outdated packages
+      run: npm outdated || true
+
+  codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+      
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: javascript
+        
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+      
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3

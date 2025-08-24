@@ -1,5 +1,5 @@
 version: "1"
 rules:
-  - base: master
-    upstream: lryanle:master
+  - base: main
+    upstream: lryanle:main
     mergeMethod: hardreset

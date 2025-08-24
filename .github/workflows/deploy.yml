@@ -1,0 +1,102 @@
+name: Deploy - Vercel Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Git ref to deploy'
+        required: false
+        default: 'main'
+      force_deploy:
+        description: 'Force deployment'
+        required: false
+        type: boolean
+        default: false
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to deploy'
+        required: false
+        type: string
+        default: 'main'
+      force_deploy:
+        description: 'Force deployment'
+        required: false
+        type: boolean
+        default: false
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  deploy:
+    name: "🚀 Deploy to Vercel"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Setup Debug Environment
+      if: ${{ inputs.debug_mode == true }}
+      run: |
+        echo "🐛 DEPLOY DEBUG MODE ENABLED"
+        echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+        echo "ACTIONS_RUNNER_DEBUG=true" >> $GITHUB_ENV
+        echo "NPM_CONFIG_LOGLEVEL=verbose" >> $GITHUB_ENV
+        echo "VERCEL_DEBUG=1" >> $GITHUB_ENV
+        echo "Debug mode activated for Deploy workflow"
+        
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref || github.ref }}
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: Install dependencies (single attempt)
+      run: npm ci --prefer-offline --no-audit 2>/dev/null || npm install --prefer-offline --no-audit
+      
+    - name: Build for deployment
+      run: npm run build
+      
+    - name: Check Vercel configuration
+      run: |
+        if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+          echo "⚠️  VERCEL_TOKEN not configured - skipping Vercel deployment"
+          echo "To enable Vercel deployment, add these secrets to your GitHub repository:"
+          echo "- VERCEL_TOKEN: Your Vercel API token"
+          echo "- ORG_ID: Your Vercel organization ID"
+          echo "- PROJECT_ID: Your Vercel project ID"
+          echo "SKIP_VERCEL=true" >> $GITHUB_ENV
+        else
+          echo "✅ Vercel secrets configured - proceeding with deployment"
+          echo "SKIP_VERCEL=false" >> $GITHUB_ENV
+        fi
+      
+    - name: Deploy to Vercel
+      if: env.SKIP_VERCEL == 'false'
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        vercel-org-id: ${{ secrets.ORG_ID }}
+        vercel-project-id: ${{ secrets.PROJECT_ID }}
+        working-directory: ./
+        
+    - name: Deployment Summary
+      run: |
+        if [ "$SKIP_VERCEL" == "false" ]; then
+          echo "🚀 Deployment to Vercel completed successfully!"
+        else
+          echo "📦 Build completed - ready for manual deployment"
+          echo "Configure Vercel secrets for automatic deployment"
+        fi

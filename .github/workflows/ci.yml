@@ -1,0 +1,78 @@
+name: CI - Linting & Type Checking
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Git ref to test'
+        required: false
+        default: 'main'
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to test'
+        required: false
+        type: string
+        default: 'main'
+      debug_mode:
+        description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  ci-checks:
+    name: "🔍 CI: Lint & Type Check"
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Setup Debug Environment
+      if: ${{ inputs.debug_mode == true }}
+      run: |
+        echo "🐛 CI DEBUG MODE ENABLED"
+        echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+        echo "ACTIONS_RUNNER_DEBUG=true" >> $GITHUB_ENV
+        echo "NPM_CONFIG_LOGLEVEL=verbose" >> $GITHUB_ENV
+        echo "Debug mode activated for CI workflow"
+        
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.ref || github.ref }}
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: Install dependencies (single attempt)
+      run: |
+        if [ "${{ inputs.debug_mode }}" == "true" ]; then
+          echo "🐛 Installing dependencies with debug output..."
+          npm ci --prefer-offline --verbose || npm install --prefer-offline --verbose
+        else
+          npm ci --prefer-offline --no-audit 2>/dev/null || npm install --prefer-offline --no-audit
+        fi
+      
+    - name: Run ESLint
+      run: |
+        echo "📝 Running ESLint..."
+        npm run lint
+        echo "✅ Linting completed successfully!"
+      
+    - name: Run TypeScript type check
+      run: |
+        echo "🔍 Running TypeScript type check..."
+        npx tsc --noEmit
+        echo "✅ Type checking completed successfully!"
+        
+    - name: CI Summary
+      run: |
+        echo "✅ All CI checks passed!"
+        echo "🎉 Code quality validation completed successfully!"
