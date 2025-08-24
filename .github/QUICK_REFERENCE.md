@@ -68,6 +68,8 @@ Push/PR → Gatekeeper → Test-1 → Test-2 → Test-3 → CI & Security → De
 | **Need urgent deploy** | Use `force_deploy: true` |
 | **Test specific fix** | Use `ref: commit-hash` |
 | **Skip security** | Use `run_workflows: test1,test2,test3,ci,deploy` |
+| **Security vulnerabilities** | Run `./scripts/security-update.sh` |
+| **Package updates needed** | `npm install next@latest axios@latest` |
 
 ---
 💡 **Tip**: Check the full README.md for detailed documentation and troubleshooting.

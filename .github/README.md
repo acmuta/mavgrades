@@ -270,6 +270,28 @@ npm run build         # Check build
 # - GitHub Actions enabled in settings
 ```
 
+### Security Vulnerabilities
+
+If security scans fail due to vulnerabilities:
+
+1. **Check the vulnerability report** in the workflow logs
+2. **Run the security update script**:
+   ```bash
+   ./scripts/security-update.sh
+   ```
+3. **Manual package updates**:
+   ```bash
+   # Update specific vulnerable packages
+   npm install next@latest axios@latest
+   npm update  # Update all packages
+   ```
+4. **Test after updates**:
+   ```bash
+   npm run build
+   npm run lint
+   npm audit --audit-level high
+   ```
+
 ### Debug Mode
 
 Enable debug logging by adding this secret:
