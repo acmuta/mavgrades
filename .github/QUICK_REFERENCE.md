@@ -55,8 +55,22 @@ npm run build        # Check build
 
 ## 🛡️ Gatekeeper Flow
 
-```
-Push/PR → Gatekeeper → CI → Build & Security (parallel) → Deploy → Report
+```mermaid
+graph LR
+    A["🎯 Triggers"] --> B["🛡️ Gatekeeper"]
+    B --> C["🔍 CI"]
+    C --> D["🏗️ Build"]
+    C --> E["🔒 Security"]
+    D --> F["🚀 Deploy"]
+    E --> F
+    F --> G["📊 Report<br/>[ci, build, security, deploy]"]
+    
+    style B fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    style C fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+    style D fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    style E fill:#e0f2f1,stroke:#009688,stroke-width:2px
+    style F fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
 ```
 
 ## 🚨 Emergency Actions

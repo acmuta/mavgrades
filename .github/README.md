@@ -15,42 +15,93 @@ This repository uses a **centralized gatekeeper pattern** for CI/CD operations, 
 ## 🏗️ Architecture Overview
 
 ```mermaid
-graph TD
-    A["🚀 Triggers<br/>- Push to main/develop<br/>- Pull Request<br/>- Manual Dispatch"] --> B["🛡️ gatekeeper.yml<br/>CENTRAL ORCHESTRATOR"]
+graph TB
+    subgraph "🎯 TRIGGER EVENTS"
+        T1["📤 Push to main/develop"]
+        T2["🔀 Pull Request"] 
+        T3["🎮 Manual Dispatch"]
+    end
     
-    B --> C["📝 test-1-lint.yml<br/>Test-1: Linting"]
-    C -->|"✅ PASSED"| D["🔍 test-2-typecheck.yml<br/>Test-2: Type Check"]
-    D -->|"✅ PASSED"| E["🏗️ test-3-build.yml<br/>Test-3: Build"]
+    T1 --> GK
+    T2 --> GK
+    T3 --> GK
     
-    E -->|"✅ PASSED"| F["🔄 ci.yml<br/>CI: Full Pipeline"]
-    E -->|"✅ PASSED"| G["🔒 security.yml<br/>Security: Scans"]
+    subgraph "🛡️ GATEKEEPER ORCHESTRATOR"
+        GK["gatekeeper.yml<br/>🎭 Central Control<br/>• Sequential execution<br/>• Failure handling<br/>• Report generation"]
+    end
     
-    F --> H["🚀 deploy.yml<br/>Deploy: Vercel"]
-    G --> H
+    subgraph "🔍 STAGE 1: CODE QUALITY"
+        CI["ci.yml<br/>📝 Linting & Type Check<br/>• ESLint validation<br/>• TypeScript checking<br/>• Code style enforcement"]
+    end
     
-    H --> I["📊 Report Generation<br/>- Core Tests: [test1, test2, test3]<br/>- Full Pipeline: [test1, test2, test3, ci, security, deploy]"]
+    subgraph "⚡ STAGE 2: PARALLEL EXECUTION"
+        BUILD["build.yml<br/>🏗️ Build & Validation<br/>• Next.js compilation<br/>• Build artifact creation<br/>• Asset validation"]
+        
+        SEC["security.yml<br/>🔒 Security Scanning<br/>• npm audit (critical only)<br/>• Dependency checking<br/>• CodeQL analysis"]
+    end
     
-    C -.->|"❌ FAILED"| J["🛑 Pipeline Stopped<br/>Core Tests: [FAILED, SKIPPED, SKIPPED]"]
-    D -.->|"❌ FAILED"| K["🛑 Pipeline Stopped<br/>Core Tests: [PASSED, FAILED, SKIPPED]"]
-    E -.->|"❌ FAILED"| L["🛑 Pipeline Stopped<br/>Core Tests: [PASSED, PASSED, FAILED]"]
-    F -.->|"❌ FAILED"| M["⚠️ CI Failed<br/>Deploy Skipped"]
-    G -.->|"❌ FAILED"| N["⚠️ Security Failed<br/>Deploy Skipped"]
+    subgraph "🚀 STAGE 3: DEPLOYMENT"
+        DEPLOY["deploy.yml<br/>🌐 Vercel Deployment<br/>• Production deployment<br/>• Environment validation<br/>• Status confirmation"]
+    end
     
-    style A fill:#e1f5fe
-    style B fill:#fff3e0,stroke:#ff9800,stroke-width:3px
-    style C fill:#f3e5f5
-    style D fill:#f3e5f5
-    style E fill:#f3e5f5
-    style F fill:#e8f5e8
-    style G fill:#e0f2f1
-    style H fill:#fff3e0
-    style I fill:#c8e6c9
-    style J fill:#ffcdd2
-    style K fill:#ffcdd2
-    style L fill:#ffcdd2
-    style M fill:#ffe0b2
-    style N fill:#ffe0b2
+    subgraph "📊 STAGE 4: REPORTING"
+        REPORT["📈 Status Report<br/>Array: [ci, build, security, deploy]<br/>• Success tracking<br/>• Failure isolation"]
+    end
+    
+    GK --> CI
+    CI -->|"✅ PASSED"| BUILD
+    CI -->|"✅ PASSED"| SEC
+    BUILD -->|"✅ PASSED"| DEPLOY
+    SEC -->|"✅ PASSED"| DEPLOY
+    DEPLOY --> REPORT
+    
+    CI -.->|"❌ FAILED"| STOP1["🛑 [FAILED, SKIPPED, SKIPPED, SKIPPED]"]
+    BUILD -.->|"❌ FAILED"| STOP2["🛑 [PASSED, FAILED, SKIPPED, SKIPPED]"]
+    SEC -.->|"❌ FAILED"| STOP3["🛑 [PASSED, PASSED, FAILED, SKIPPED]"]
+    
+    subgraph "🎛️ MANUAL CONTROLS"
+        M1["Individual Workflow Triggers<br/>• ci.yml standalone<br/>• build.yml standalone<br/>• security.yml standalone<br/>• deploy.yml standalone"]
+        M2["Gatekeeper Options<br/>• run_workflows: 'ci,build'<br/>• force_deploy: true<br/>• ref: 'feature-branch'"]
+    end
+    
+    M1 -.-> CI
+    M1 -.-> BUILD  
+    M1 -.-> SEC
+    M1 -.-> DEPLOY
+    M2 -.-> GK
+    
+    style GK fill:#fff3e0,stroke:#ff9800,stroke-width:3px
+    style CI fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+    style BUILD fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    style SEC fill:#e0f2f1,stroke:#009688,stroke-width:2px
+    style DEPLOY fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    style REPORT fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    style STOP1 fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px
+    style STOP2 fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px
+    style STOP3 fill:#ffe0b2,stroke:#f57c00,stroke-width:2px
+    style T1 fill:#e1f5fe,stroke:#0277bd,stroke-width:1px
+    style T2 fill:#e1f5fe,stroke:#0277bd,stroke-width:1px
+    style T3 fill:#fce4ec,stroke:#c2185b,stroke-width:1px
+    style M1 fill:#f1f8e9,stroke:#689f38,stroke-width:1px
+    style M2 fill:#f1f8e9,stroke:#689f38,stroke-width:1px
 ```
+
+### 🔄 **Execution Flow Summary**
+
+1. **🎯 Trigger** → Any push, PR, or manual dispatch activates the gatekeeper
+2. **🔍 Code Quality** → ESLint + TypeScript validation (must pass to continue)
+3. **⚡ Parallel Stage** → Build creation & Security scanning (run simultaneously)
+4. **🚀 Deployment** → Vercel deployment (only if build + security pass)
+5. **📊 Reporting** → Clean status array: `[ci, build, security, deploy]`
+
+### ✨ **Key Architecture Benefits**
+
+- ✅ **No Duplication** - Single npm install per workflow
+- ✅ **Parallel Efficiency** - Build & Security run together after CI
+- ✅ **Clear Dependencies** - Each stage has defined prerequisites  
+- ✅ **Fast Failure** - Pipeline stops immediately on any failure
+- ✅ **Flexible Control** - Individual workflows can run standalone
+- ✅ **Clean Reporting** - Simple 4-element status array
 
 ## 🛡️ Gatekeeper Workflow
 
