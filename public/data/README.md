@@ -18,11 +18,16 @@ Email to `records@uta.edu` with the following template:
 ```md
 Dear Registrar’s Office,
 
-I hope this message finds you well, my name is **INSERT YOUR NAME HERE**, and I am writing this on behalf of the Association for Computing Machinery at UTA (ACM). We are looking to access the grade distribution records and data for the purpose of designing a website to display these statistics, enhancing academic transparency and aiding students in course selection through the Freedom of Information Act (FOIA).
+I hope this message finds you well. My name is *** INSERT NAME HERE ***, and I am writing on behalf of the Association for Computing Machinery at the University of Texas at Arlington (ACM UTA).
 
-We would like to request data on grade distributions for the following semesters: **INSERT EACH SEMESTER (Spring/Summer/Fall) INDIVIDUALLY HERE**
+We are requesting access to grade distribution records under the Freedom of Information Act (FOIA) for the purpose of updating MavGrades, a student-run website that displays course grade statistics to enhance academic transparency and assist students with course selection.
 
-The specific data we are looking for are as follows. Note that the data should follow this exact csv format: 
+We would like to request data on grade distributions for the following semesters:
+- Fall 2024
+- Spring 2025
+- Summer 2025
+
+The dataset should follow the exact CSV structure below to ensure compatibility with our software:
 - Academic Year
 - Term
 - Academic Career
@@ -46,11 +51,14 @@ The specific data we are looking for are as follows. Note that the data should f
 - R
 - Total Grades
 
-An example row of the csv data we are looking for is as follows:
-- 2020 - 2021,2020 Fall,GRAD,GRAD,Choong-Un,Kim,"Anthony Martinez, Kimaya Vyavhare, Pushkar Kiran Gothe, Yao Ren, Yi Ram Kim",MSE,5304,001,8,7,0,0,0,0,0,0,0,0,15
+An example CSV is attached for reference, and previous semester datasets can be viewed here:
+https://github.com/acmuta/utagrades/tree/main/public/data.
 
-Every semester requested should be in its own independent csv file. For more examples of previous data requested, please see here: https://github.com/acmuta/utagrades/tree/main/public/data.
+Please provide each semester’s data as an independent CSV file formatted identically to the attached *** ATTACH A RECENT SEMESTER CSV TO THE EMAIL AND REFERENCE THE SEMESTER HERE *** example.
 
-Thanks,
-**INSERT YOUR NAME HERE**
+Thank you very much for your time and assistance.
+
+Best regards,
+*** INSERT NAME HERE ***
+*** YOUR ROLE ***, Association for Computing Machinery at UTA
 ```
