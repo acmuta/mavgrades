@@ -13,10 +13,10 @@ The data provided within the software is licensed under the **Creative Commons A
 
 ## Requesting New Grade Data
 
-Email to `records@uta.edu` with the following template:
+Email to `publicrecords@uta.edu` with the following template:
 
 ```md
-Dear Registrar’s Office,
+Dear Public Records,
 
 I hope this message finds you well. My name is *** INSERT NAME HERE ***, and I am writing on behalf of the Association for Computing Machinery at the University of Texas at Arlington (ACM UTA).
 
