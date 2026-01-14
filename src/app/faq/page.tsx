@@ -32,7 +32,7 @@ const FAQs = [
   {
     question: "How does MavGrades acquire its data?",
     answer:
-      "MavGrades utilizes official grade distribution data provided by the University of Texas at Arlington (UTA). This data is regularly updated and includes information for all courses taught at UTA since 2017, ensuring that students have access to the most accurate and current information for their academic planning.",
+      "MavGrades utilizes official grade distribution data provided by the University of Texas at Arlington (UTA). This data is regularly updated and includes information for all courses taught at UTA since 2020, ensuring that students have access to the most accurate and current information for their academic planning.",
   },
   {
     question: "Why can't I see a section or professor?",
