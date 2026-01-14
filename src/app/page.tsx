@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Poppins, Montserrat } from "next/font/google";
 import SearchBar from "./components/SearchBar";
+import Notification from "./components/Notification";
 import { BsQuestionCircle } from "react-icons/bs";
 import Link from "next/link";
 
@@ -20,6 +21,7 @@ const montserrat = Montserrat({
 export default function Home() {
   return (
     <>
+      <Notification />
       <div className="flex flex-col items-center justify-center min-h-screen text-white px-4 lg:px-24">
         <Head>
           <title>MavGrades</title>
