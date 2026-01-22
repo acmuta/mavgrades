@@ -14,6 +14,15 @@ const tailwindColors: { [key: string]: string } = {
   "border-t-yellow-400": "#FDE047",
 };
 
+// Interface for UTA professor data
+interface UTAProfessor {
+  userName: string;
+  instructorName: string;
+  nameProfileLink: string;
+  email: string;
+  workingTitle: string;
+}
+
 const StatsCard = ({
   selectedItems,
   selectedProfessor,
@@ -22,6 +31,9 @@ const StatsCard = ({
   selectedProfessor?: string;
 }) => {
   const [showInfoBox, setShowInfoBox] = useState(false);
+  const [utaProfessors, setUtaProfessors] = useState<{
+    [key: string]: UTAProfessor;
+  }>({});
   const infoBoxRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const aggregatedData = Array.from(selectedItems.values());
@@ -45,6 +57,82 @@ const StatsCard = ({
     )}`;
   };
 
+  // Function to extract last name from full professor name
+  const extractLastName = (fullName: string): string => {
+    const parts = fullName.trim().split(" ");
+    return parts[parts.length - 1];
+  };
+
+  // Function to fetch UTA professor data
+  const fetchUTAProfessor = async (
+    professorName: string
+  ): Promise<UTAProfessor | null> => {
+    try {
+      const lastName = extractLastName(professorName);
+      const firstLetter = lastName.charAt(0).toUpperCase();
+
+      console.log(
+        `Fetching UTA data for professor: ${professorName}, lastName: ${lastName}, firstLetter: ${firstLetter}`
+      );
+
+      const response = await fetch(`/api/uta-professors?alpha=${firstLetter}`);
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch UTA professor data");
+      }
+
+      const professors: UTAProfessor[] = await response.json();
+      console.log(
+        `Found ${professors.length} professors for letter ${firstLetter}`
+      );
+
+      // Find the professor by matching the last name
+      const matchedProfessor = professors.find((prof) =>
+        prof.instructorName.toLowerCase().includes(lastName.toLowerCase())
+      );
+
+      console.log(`Matched professor:`, matchedProfessor);
+      return matchedProfessor || null;
+    } catch (error) {
+      console.error("Error fetching UTA professor data:", error);
+      return null;
+    }
+  };
+
+  // Effect to fetch UTA professor data for all professors in aggregatedData
+  useEffect(() => {
+    const fetchAllProfessors = async () => {
+      const professorPromises = aggregatedData
+        .filter((data) => data?.instructor1)
+        .map(async (data) => {
+          const professorName = data.instructor1;
+          if (!utaProfessors[professorName]) {
+            const utaProf = await fetchUTAProfessor(professorName);
+            if (utaProf) {
+              return { [professorName]: utaProf };
+            }
+          }
+          return null;
+        });
+
+      const results = await Promise.all(professorPromises);
+      const newProfessors = results.reduce((acc, result) => {
+        if (result) {
+          return { ...acc, ...result };
+        }
+        return acc;
+      }, {} as { [key: string]: UTAProfessor });
+
+      if (newProfessors && Object.keys(newProfessors).length > 0) {
+        setUtaProfessors((prev) => ({ ...prev, ...newProfessors }));
+      }
+    };
+
+    if (aggregatedData.length > 0) {
+      fetchAllProfessors();
+    }
+  }, [aggregatedData]);
+
   const InfoBox = ({
     label,
     value,
@@ -57,6 +145,7 @@ const StatsCard = ({
     isProf?: boolean;
   }) => {
     const textColor = tailwindColors[colorClass] || "#FFFFFF";
+    const utaProf = isProf ? utaProfessors[value.toString()] : null;
 
     return (
       <div
@@ -68,21 +157,40 @@ const StatsCard = ({
             {value}
           </span>
           {isProf && (
-            <a
-              href={getRMPUrl(value.toString())}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-[5%] text-white hover:text-gray-300 transition-colors"
-              title={`View ${value} on Rate My Professor`}
-            >
-              <Image
-                src="rmp.svg"
-                alt="RMP"
-                width="30"
-                height="30"
-                className="mr-1"
-              />
-            </a>
+            <div className="flex items-center gap-1 ml-[5%]">
+              {utaProf && (
+                <a
+                  href={utaProf.nameProfileLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-gray-300 transition-colors"
+                  title={`View ${value} UTA Profile`}
+                >
+                  <Image
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAADPUlEQVR4nO2cy2oUQRSGPxUkXqKgogY3iiRRFwY34iMIutMYIupS3YgbfYGshARECSZmDIi+gXHnAyQEQUEENyJqFDJxIyZioqGksAZ0MCE9092nevr/4N8MQ50+p6rreqpBCCGEEEIIIYQQQgghhBAiHrYB54EKMA1UgaWgavhtDOgH2q0ftpXoBsaB74BboxaAB0Cn9cMXmc3AEPAzQeDr5d+OQaDN2pmi0Qm8aiLw9ZoCOqydKgrHQp/uUtYM0GPtXBFafjWD4Nf0UW/CyrQBLzMMfk3Pw/gi6hjKIfg1DdQbLzvdTc52kmpeXdG/jOcY/JpGjBpblCvcBYMK8Da1YubP9oIzUp9164uBimEF3Ld2PgamDStg0tr5GJgzrIBZa+djYNGwAn5YOx8Di6oAW+bUBdkyrUHYljHDChg19j0K+g0r4Jy18zHQbrgVsdXa+TJvxlWsnY6JrnCAnlfw/dT3oLXTsTGYYwXcsnY21iPJyZyOJDdZOxsre4EPGQb/M7DP2snY6QkpJFlkRBy1dq4odIRkqrSC77s2JWY1MCYMhAP0RgO/FAZcpSY2+TaMJFyszYd5vqaaKa+Y+8L+zVQ4TFkMmg2/jYbtBa1whRBCCFEsDgPbMyzfl30ow/ILyQ7gJvAizOF7M7TVG2x4WzeC7dJyYIUF1t0MbQ7/Z8F2D9hPidgF3FklH6ia0XaxL/PLCjb9s9wGdtLiXFolCO4vXc7A9pU12PU5Shdo0VY/kWAvZw7YnaL9PQkTwJ600ttwIuzFJ93JnAA2pGDfl/G0AfvvgeMUnDMJPzHg6vQIWN+E/XXhkwXNJO/6vKVCchFYbsJ5F/QsHFU20u010vLrtVzEccHPt3+l4LwL+hQG0Y1rsO3/czWc/6Zl39/gPEtBOJ1hjs9MmMufCrfqtwR1BbvDGZ0n16aq3m70932/ZhQAF4G+AUeIFH8K9TqCILmM9SZcrY2OxxEEx+Wkh0TGyQiC4nJWNOOBT/l4F0FAXM56G0u6y/UIguGMdI0ISHO+7Qom77s5ruQyx5Vc5riSyxxXcpnjSi5zXMlljiu5zHEllzmu5BJCCCGEEEIIIYQQQgghhGA1fgNFTgVKFFEfrwAAAABJRU5ErkJggg=="
+                    alt="UTA Profile"
+                    width="28"
+                    height="28"
+                    className="mr-1 filter invert"
+                  />
+                </a>
+              )}
+              <a
+                href={getRMPUrl(value.toString())}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-gray-300 transition-colors"
+                title={`View ${value} on Rate My Professor`}
+              >
+                <Image
+                  src="rmp.svg"
+                  alt="RMP"
+                  width="30"
+                  height="30"
+                  className="mr-1"
+                />
+              </a>
+            </div>
           )}
         </div>
       </div>
