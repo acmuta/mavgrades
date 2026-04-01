@@ -26,7 +26,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -1076,7 +1076,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -1436,7 +1436,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -1466,7 +1466,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -1526,7 +1526,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -1556,8 +1556,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 5.26
+    "course_gpa": null,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "SOCW",
@@ -1766,7 +1766,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -2156,7 +2156,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.5,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -2216,8 +2216,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 5.88
+    "course_gpa": null,
+    "drop_percent": 11.11
   },
   {
     "subject_id": "NURS",
@@ -2246,7 +2246,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -2366,7 +2366,7 @@
     "instructor3": "Sayda Major",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -2426,7 +2426,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -2606,7 +2606,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -3026,7 +3026,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -3116,7 +3116,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -3626,7 +3626,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -3656,8 +3656,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 3.23
+    "course_gpa": null,
+    "drop_percent": 6.25
   },
   {
     "subject_id": "EDUC",
@@ -3896,7 +3896,7 @@
     "instructor3": "Sayda Major",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -4496,7 +4496,7 @@
     "instructor3": "Shu Kang",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -4556,7 +4556,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -4886,7 +4886,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -5246,7 +5246,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -5306,7 +5306,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -5426,7 +5426,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -5456,7 +5456,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.11,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -5786,7 +5786,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -5816,7 +5816,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.43,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -5996,8 +5996,8 @@
     "instructor3": "Amy Wilkins",
     "instructor4": "Christi Nguyen",
     "instructor5": "Kelly Johnson",
-    "course_gpa": 4.0,
-    "drop_percent": 2.04
+    "course_gpa": null,
+    "drop_percent": 4.0
   },
   {
     "subject_id": "EMBA",
@@ -6446,7 +6446,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.43,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -6476,7 +6476,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -6716,7 +6716,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -7256,7 +7256,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -7376,7 +7376,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -7406,7 +7406,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -7796,7 +7796,7 @@
     "instructor3": "Deborah Stewart",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -7826,8 +7826,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 4.76
+    "course_gpa": null,
+    "drop_percent": 9.09
   },
   {
     "subject_id": "LIST",
@@ -7976,7 +7976,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -8516,7 +8516,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.5,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -9116,7 +9116,7 @@
     "instructor3": "Cathryn Brown",
     "instructor4": "Cynthia Casey",
     "instructor5": "Deborah Behan",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -9146,7 +9146,7 @@
     "instructor3": "Cynthia Casey",
     "instructor4": "Deborah Behan",
     "instructor5": "Deborah Lewis",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -10046,7 +10046,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -10286,7 +10286,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -10406,7 +10406,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -10556,8 +10556,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 6.67
+    "course_gpa": null,
+    "drop_percent": 12.5
   },
   {
     "subject_id": "NURS",
@@ -10586,7 +10586,7 @@
     "instructor3": "Sayda Major",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -10646,7 +10646,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -11156,7 +11156,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -11186,7 +11186,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -11366,7 +11366,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -11396,8 +11396,8 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 6.67
+    "course_gpa": null,
+    "drop_percent": 12.5
   },
   {
     "subject_id": "LARC",
@@ -11696,7 +11696,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -11726,7 +11726,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -12596,7 +12596,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.43,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -12986,7 +12986,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -13106,8 +13106,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.43,
-    "drop_percent": 7.14
+    "course_gpa": 0.0,
+    "drop_percent": 12.5
   },
   {
     "subject_id": "EE",
@@ -13646,7 +13646,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -13766,8 +13766,8 @@
     "instructor3": "Dolores Aguilar",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 7.69
+    "course_gpa": null,
+    "drop_percent": 14.29
   },
   {
     "subject_id": "NURS",
@@ -13796,7 +13796,7 @@
     "instructor3": "Dolores Aguilar",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -13946,7 +13946,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -14426,7 +14426,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -14606,8 +14606,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 5.26
+    "course_gpa": null,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "KINE",
@@ -15266,7 +15266,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -15716,7 +15716,7 @@
     "instructor3": "Shu Kang",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.56,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -15776,7 +15776,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -15806,7 +15806,7 @@
     "instructor3": "Dolores Aguilar",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -16676,7 +16676,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -16706,7 +16706,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -16736,7 +16736,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.56,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -16766,7 +16766,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -17126,7 +17126,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -17156,7 +17156,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -17186,8 +17186,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.56,
-    "drop_percent": 5.56
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "MSE",
@@ -17636,7 +17636,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -17666,7 +17666,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.33,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -17696,7 +17696,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -18206,7 +18206,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -18746,7 +18746,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -18896,8 +18896,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 9.09
+    "course_gpa": null,
+    "drop_percent": 16.67
   },
   {
     "subject_id": "NURS",
@@ -19136,7 +19136,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -19496,7 +19496,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.5,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -19526,7 +19526,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -19946,7 +19946,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -20276,7 +20276,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -20906,7 +20906,7 @@
     "instructor3": "Sayda Major",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -20966,7 +20966,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -20996,7 +20996,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -21206,7 +21206,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -21416,7 +21416,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -21506,7 +21506,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -21596,7 +21596,7 @@
     "instructor3": "Dolores Aguilar",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -21626,7 +21626,7 @@
     "instructor3": "Dolores Aguilar",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -22586,7 +22586,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -23126,7 +23126,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -23156,7 +23156,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -23426,7 +23426,7 @@
     "instructor3": "Sayda Major",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -24266,7 +24266,7 @@
     "instructor3": "Sayda Major",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -24326,7 +24326,7 @@
     "instructor3": "Christi Nguyen",
     "instructor4": "Cynthia Plonien",
     "instructor5": "Kelly Johnson",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -24836,7 +24836,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -24866,8 +24866,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.5,
-    "drop_percent": 11.76
+    "course_gpa": 0.0,
+    "drop_percent": 20.0
   },
   {
     "subject_id": "HCAD",
@@ -25016,7 +25016,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -25256,7 +25256,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -25586,7 +25586,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -25916,7 +25916,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -26096,7 +26096,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -26126,7 +26126,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -26666,7 +26666,7 @@
     "instructor3": "Sayda Major",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -26816,7 +26816,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -27206,7 +27206,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -27746,7 +27746,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -28616,7 +28616,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -28736,7 +28736,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -29066,7 +29066,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -29456,7 +29456,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.5,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -29606,7 +29606,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.5,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -30176,7 +30176,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -30236,7 +30236,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -30716,7 +30716,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.56,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -30746,7 +30746,7 @@
     "instructor3": "Sara Moore",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -30806,7 +30806,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -31676,7 +31676,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -31856,7 +31856,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -33476,7 +33476,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -33746,7 +33746,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -35546,7 +35546,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -35576,7 +35576,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -35726,8 +35726,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.16,
-    "drop_percent": 4.94
+    "course_gpa": 0.0,
+    "drop_percent": 8.51
   },
   {
     "subject_id": "MATH",
@@ -35876,8 +35876,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.77,
-    "drop_percent": 0.94
+    "course_gpa": 0.0,
+    "drop_percent": 1.75
   },
   {
     "subject_id": "MATH",
@@ -35906,8 +35906,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.65,
-    "drop_percent": 6.98
+    "course_gpa": 0.0,
+    "drop_percent": 11.69
   },
   {
     "subject_id": "MATH",
@@ -38786,7 +38786,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -38816,7 +38816,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -38846,7 +38846,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -38876,7 +38876,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -39176,7 +39176,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -41816,8 +41816,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 33.33
+    "course_gpa": null,
+    "drop_percent": 50.0
   },
   {
     "subject_id": "ENGL",
@@ -41846,7 +41846,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.4,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -41876,7 +41876,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.67,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -41906,7 +41906,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.11,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -42326,7 +42326,7 @@
     "instructor3": "Patricia Allard",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -45476,7 +45476,7 @@
     "instructor3": "Amy Hiett",
     "instructor4": "Courtney Johnson",
     "instructor5": "Glenn Wood",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -45506,7 +45506,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -45536,7 +45536,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -45746,8 +45746,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 2.33
+    "course_gpa": null,
+    "drop_percent": 4.55
   },
   {
     "subject_id": "MUSI",
@@ -46346,7 +46346,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -46916,7 +46916,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -46946,7 +46946,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 1.5,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -46976,7 +46976,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.8,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -47006,7 +47006,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.86,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -49886,7 +49886,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -51056,7 +51056,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 1.2,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -51086,8 +51086,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 0.89,
-    "drop_percent": 7.69
+    "course_gpa": 0.0,
+    "drop_percent": 9.09
   },
   {
     "subject_id": "ENGL",
@@ -51116,7 +51116,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.4,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -52466,7 +52466,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -52496,7 +52496,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -53186,8 +53186,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 5.26
+    "course_gpa": null,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "FREN",
@@ -54356,8 +54356,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.24,
-    "drop_percent": 10.11
+    "course_gpa": 0.0,
+    "drop_percent": 15.25
   },
   {
     "subject_id": "MATH",
@@ -56066,7 +56066,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -58016,7 +58016,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -60476,8 +60476,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.04,
-    "drop_percent": 3.06
+    "course_gpa": 0.0,
+    "drop_percent": 5.26
   },
   {
     "subject_id": "MATH",
@@ -60506,8 +60506,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.04,
-    "drop_percent": 2.44
+    "course_gpa": 0.0,
+    "drop_percent": 3.64
   },
   {
     "subject_id": "MATH",
@@ -60536,8 +60536,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.02,
-    "drop_percent": 1.96
+    "course_gpa": 0.0,
+    "drop_percent": 3.39
   },
   {
     "subject_id": "MATH",
@@ -60566,8 +60566,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.18,
-    "drop_percent": 13.27
+    "course_gpa": 0.0,
+    "drop_percent": 19.12
   },
   {
     "subject_id": "MATH",
@@ -60746,7 +60746,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -61556,8 +61556,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.14,
-    "drop_percent": 5.21
+    "course_gpa": 0.0,
+    "drop_percent": 8.93
   },
   {
     "subject_id": "MATH",
@@ -61916,8 +61916,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.11,
-    "drop_percent": 5.88
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -61946,7 +61946,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.2,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -61976,7 +61976,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.0,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -62006,8 +62006,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.56,
-    "drop_percent": 5.56
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -62036,7 +62036,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -62066,7 +62066,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -62096,7 +62096,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -62126,7 +62126,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -62156,8 +62156,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.86,
-    "drop_percent": 7.69
+    "course_gpa": 0.0,
+    "drop_percent": 12.5
   },
   {
     "subject_id": "CSE",
@@ -63986,7 +63986,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -64316,7 +64316,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -64346,7 +64346,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -64766,8 +64766,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.85,
-    "drop_percent": 0.92
+    "course_gpa": 0.0,
+    "drop_percent": 1.79
   },
   {
     "subject_id": "THEA",
@@ -65666,7 +65666,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -67196,7 +67196,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.59,
+    "course_gpa": 3.57,
     "drop_percent": 0.0
   },
   {
@@ -67376,7 +67376,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -68246,7 +68246,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.43,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -68576,7 +68576,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -70226,7 +70226,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -70916,8 +70916,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.0,
-    "drop_percent": 6.67
+    "course_gpa": 0.0,
+    "drop_percent": 11.11
   },
   {
     "subject_id": "ENGL",
@@ -71306,8 +71306,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 6.67
+    "course_gpa": null,
+    "drop_percent": 12.5
   },
   {
     "subject_id": "MUSI",
@@ -71396,8 +71396,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.33,
-    "drop_percent": 26.67
+    "course_gpa": 0.0,
+    "drop_percent": 40.0
   },
   {
     "subject_id": "ENGL",
@@ -71426,7 +71426,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 0.8,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -71546,8 +71546,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.7,
-    "drop_percent": 11.11
+    "course_gpa": 0.0,
+    "drop_percent": 16.07
   },
   {
     "subject_id": "MATH",
@@ -71906,7 +71906,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.78,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -72086,8 +72086,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.24,
-    "drop_percent": 7.14
+    "course_gpa": 0.0,
+    "drop_percent": 10.71
   },
   {
     "subject_id": "MATH",
@@ -72416,8 +72416,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.54,
-    "drop_percent": 5.49
+    "course_gpa": 0.0,
+    "drop_percent": 8.62
   },
   {
     "subject_id": "MATH",
@@ -72896,8 +72896,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.43,
-    "drop_percent": 6.25
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -72926,7 +72926,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.5,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -72956,7 +72956,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -72986,8 +72986,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.56,
-    "drop_percent": 5.56
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -73016,7 +73016,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.5,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -73046,7 +73046,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -73076,8 +73076,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 5.26
+    "course_gpa": null,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "INSY",
@@ -73616,7 +73616,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -73886,8 +73886,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.86,
-    "drop_percent": 7.14
+    "course_gpa": 0.0,
+    "drop_percent": 11.11
   },
   {
     "subject_id": "ENGL",
@@ -73916,7 +73916,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.11,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -73946,7 +73946,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -74096,7 +74096,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -74936,7 +74936,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.67,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -74966,8 +74966,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.0,
-    "drop_percent": 6.67
+    "course_gpa": 0.0,
+    "drop_percent": 11.11
   },
   {
     "subject_id": "ENGL",
@@ -74996,7 +74996,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -75026,7 +75026,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -76256,8 +76256,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 2.44
+    "course_gpa": null,
+    "drop_percent": 4.76
   },
   {
     "subject_id": "ENGL",
@@ -76286,8 +76286,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.67,
-    "drop_percent": 6.25
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -76316,8 +76316,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 12.5
+    "course_gpa": null,
+    "drop_percent": 22.22
   },
   {
     "subject_id": "ENGL",
@@ -77156,7 +77156,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -77846,8 +77846,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.0,
-    "drop_percent": 6.67
+    "course_gpa": 0.0,
+    "drop_percent": 11.11
   },
   {
     "subject_id": "UNIV-EN",
@@ -78386,7 +78386,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -78956,8 +78956,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.92,
-    "drop_percent": 5.26
+    "course_gpa": 0.0,
+    "drop_percent": 8.77
   },
   {
     "subject_id": "MATH",
@@ -79436,8 +79436,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 11.11
+    "course_gpa": null,
+    "drop_percent": 20.0
   },
   {
     "subject_id": "ENGL",
@@ -79466,8 +79466,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.43,
-    "drop_percent": 13.33
+    "course_gpa": 0.0,
+    "drop_percent": 22.22
   },
   {
     "subject_id": "ENGL",
@@ -80786,7 +80786,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -80816,7 +80816,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -82736,7 +82736,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -83186,7 +83186,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -83606,8 +83606,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 3.23
+    "course_gpa": null,
+    "drop_percent": 6.25
   },
   {
     "subject_id": "SOCI",
@@ -83636,7 +83636,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -83996,7 +83996,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -84476,7 +84476,7 @@
     "instructor3": "Patricia Allard",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -86396,7 +86396,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -86786,7 +86786,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -86816,7 +86816,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -86846,7 +86846,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -87296,7 +87296,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -87326,7 +87326,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -87446,8 +87446,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.33,
-    "drop_percent": 10.39
+    "course_gpa": 0.0,
+    "drop_percent": 14.29
   },
   {
     "subject_id": "MATH",
@@ -88466,7 +88466,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -89936,7 +89936,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -90056,8 +90056,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.95,
-    "drop_percent": 1.16
+    "course_gpa": 0.0,
+    "drop_percent": 2.27
   },
   {
     "subject_id": "NURS-EL",
@@ -90086,8 +90086,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 1.41
+    "course_gpa": null,
+    "drop_percent": 2.78
   },
   {
     "subject_id": "NURS-EL",
@@ -90116,8 +90116,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.8,
-    "drop_percent": 0.83
+    "course_gpa": 0.0,
+    "drop_percent": 1.61
   },
   {
     "subject_id": "NURS",
@@ -94736,8 +94736,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.79,
-    "drop_percent": 2.63
+    "course_gpa": 0.0,
+    "drop_percent": 5.0
   },
   {
     "subject_id": "MUSI",
@@ -98606,7 +98606,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -98636,7 +98636,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -99836,7 +99836,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -99866,7 +99866,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -99896,7 +99896,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -100106,7 +100106,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -100136,8 +100136,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.67,
-    "drop_percent": 6.25
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -100166,7 +100166,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.6,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -100586,8 +100586,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.4,
-    "drop_percent": 7.69
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -100796,7 +100796,7 @@
     "instructor3": "Mary Hernandez",
     "instructor4": "Patricia Allard",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -101156,7 +101156,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.0,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -101186,8 +101186,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 11.11
+    "course_gpa": null,
+    "drop_percent": 20.0
   },
   {
     "subject_id": "NURS",
@@ -101906,7 +101906,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -102806,7 +102806,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -105056,8 +105056,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.12,
-    "drop_percent": 2.04
+    "course_gpa": 0.0,
+    "drop_percent": 3.39
   },
   {
     "subject_id": "MATH",
@@ -105086,8 +105086,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 1.33,
-    "drop_percent": 28.36
+    "course_gpa": 0.0,
+    "drop_percent": 33.33
   },
   {
     "subject_id": "MATH",
@@ -105506,8 +105506,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 9.09
+    "course_gpa": null,
+    "drop_percent": 16.67
   },
   {
     "subject_id": "INSY",
@@ -108296,8 +108296,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.5,
-    "drop_percent": 13.33
+    "course_gpa": 0.0,
+    "drop_percent": 20.0
   },
   {
     "subject_id": "ENGL",
@@ -109076,8 +109076,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 5.26
+    "course_gpa": null,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -109106,8 +109106,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 2.67,
-    "drop_percent": 6.25
+    "course_gpa": 0.0,
+    "drop_percent": 10.0
   },
   {
     "subject_id": "ENGL",
@@ -109136,7 +109136,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 1.33,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -110366,8 +110366,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 1.63,
-    "drop_percent": 2.56
+    "course_gpa": 0.0,
+    "drop_percent": 3.57
   },
   {
     "subject_id": "ENGL",
@@ -112556,7 +112556,7 @@
     "instructor3": "Patricia Allard",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -112586,7 +112586,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -113096,7 +113096,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -113366,8 +113366,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 9.09
+    "course_gpa": null,
+    "drop_percent": 16.67
   },
   {
     "subject_id": "REAE",
@@ -113546,8 +113546,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 4.35
+    "course_gpa": null,
+    "drop_percent": 8.33
   },
   {
     "subject_id": "MUSI",
@@ -115556,7 +115556,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -116546,7 +116546,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -117116,7 +117116,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.56,
+    "course_gpa": 0.0,
     "drop_percent": 0.0
   },
   {
@@ -117146,8 +117146,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 2.7
+    "course_gpa": null,
+    "drop_percent": 5.26
   },
   {
     "subject_id": "UNIV-LA",
@@ -117176,8 +117176,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
-    "drop_percent": 3.03
+    "course_gpa": null,
+    "drop_percent": 5.88
   },
   {
     "subject_id": "ARCH",
@@ -119156,7 +119156,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 4.0,
+    "course_gpa": null,
     "drop_percent": 0.0
   },
   {
@@ -122126,8 +122126,8 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.05,
-    "drop_percent": 12.5
+    "course_gpa": 3.0,
+    "drop_percent": 13.04
   },
   {
     "subject_id": "ENGL",
@@ -122936,7 +122936,7 @@
     "instructor3": "",
     "instructor4": "",
     "instructor5": "",
-    "course_gpa": 3.72,
+    "course_gpa": 3.44,
     "drop_percent": 0.0
   }
 ]

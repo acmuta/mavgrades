@@ -154,33 +154,34 @@ def csv_to_combined_json(directory):
             Z_count = grades_counts["Z"]
             R_count = grades_counts["R"]
 
-            total_students = A_count + B_count + C_count + D_count + F_count + P_count + R_count
-            total_attempted = total_students + I_count + P_count + W_count + Q_count + Z_count + R_count
+            # Kevin F 3/31/26: Removed P and R from course_gpa calculation to reflect UTA's grading policy: https://catalog.uta.edu/academicregulations/grades/ 
+            total_students = A_count + B_count + C_count + D_count + F_count
 
-            total_grade_points = A_count*4 + P_count*4 + R_count*4 + B_count*3 + C_count*2 + D_count*1 + F_count*0
+            total_grade_points = (
+                A_count*4 + B_count*3 + C_count*2 + D_count*1 + F_count*0
+            )
 
             if total_students > 0:
               course_gpa = total_grade_points / total_students
             else:
               course_gpa = None
+              
+            total_attempted = (
+                A_count + B_count + C_count + D_count + F_count +
+                I_count + P_count + W_count + Q_count + Z_count + R_count
+            )
 
             if total_attempted > 0:
               drop_percent = (W_count + Q_count) / total_attempted * 100
             else:
               drop_percent = None
-                
-            if course_gpa is None and I_count > 0:
-              course_gpa = 0
-              
-            if course_gpa is None and drop_percent == 100:
-              course_gpa = 0
 
             row["course_gpa"] = round(course_gpa, 2) if course_gpa is not None else None
             row["drop_percent"] = round(drop_percent, 2) if drop_percent is not None else None
             
-            if course_gpa is None:
-              print(f"Warning: no course_gpa for {row['subject_id']} {row['course_number']} {row['section_number']}")
-              print(row)
+            # if course_gpa is None:
+            #   print(f"Warning: no course_gpa for {row['subject_id']} {row['course_number']} {row['section_number']}")
+            #   print(row)
             
             if drop_percent is None:
               print(f"Warning: no drop_percent for {row['subject_id']} {row['course_number']} {row['section_number']}")
@@ -223,7 +224,7 @@ def csv_to_combined_json(directory):
       "subjectId": sorted(unique_subjectIds),
       "courseNumber": sorted(unique_courseNumbers),
       "sectionNumber": sorted(unique_sectionNumbers),
-      "gpa": sorted(unique_gpas)
+      "gpa": sorted(g for g in unique_gpas if g is not None)
     }
 
     with open(f"{current_directory}/public/data/config.js", "w", encoding="utf-8") as f:

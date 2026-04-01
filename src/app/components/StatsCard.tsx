@@ -3,6 +3,7 @@ import BarChart from "./BarChart";
 import { GradesInfoCard } from "./GradesInfoCard";
 import ProfessorRating from "./ProfessorRating";
 import Image from "next/image";
+import { Info } from "lucide-react";
 
 // Map Tailwind CSS classes to hex codes if needed
 const tailwindColors: { [key: string]: string } = {
@@ -22,8 +23,11 @@ const StatsCard = ({
   selectedProfessor?: string;
 }) => {
   const [showInfoBox, setShowInfoBox] = useState(false);
+  const [openAverageInfoIndex, setOpenAverageInfoIndex] = useState<number | null>(null);
   const infoBoxRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const averageInfoRef = useRef<HTMLDivElement | null>(null);
+  const averageInfoButtonRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
   const aggregatedData = Array.from(selectedItems.values());
 
   const colorClasses = [
@@ -45,24 +49,67 @@ const StatsCard = ({
     )}`;
   };
 
+  const formatGpaValue = (courseGpa: number) => {
+    const safeGpa = Number.isFinite(courseGpa)
+      ? Math.min(Math.max(courseGpa, 0), 4)
+      : 0;
+    return `${safeGpa.toFixed(2)}/4.00`;
+  };
+
+  const formatGpaPercent = (courseGpa: number) => {
+    const safeGpa = Number.isFinite(courseGpa)
+      ? Math.min(Math.max(courseGpa, 0), 4)
+      : 0;
+    return `${Math.floor(safeGpa * 25)}%`;
+  };
+
+  const averageGradeExplanation =
+    "Course GPA is calculated from the grade distribution using UTA grade points: A=4, B=3, C=2, D=1, F=0. Grades like P, W, Q, I, R, and Z are excluded from GPA per UTA policy. This card shows the GPA directly on a 4.00 scale.";
+
   const InfoBox = ({
     label,
     value,
     colorClass,
     isProf = false,
+    infoIndex,
+    onInfoToggle,
+    showInfo,
   }: {
     label: string;
     value: string | number;
     colorClass: string;
     isProf?: boolean;
+    infoIndex?: number;
+    onInfoToggle?: (index: number) => void;
+    showInfo?: boolean;
   }) => {
     const textColor = tailwindColors[colorClass] || "#FFFFFF";
+    const hasInfo =
+      typeof infoIndex === "number" && typeof onInfoToggle === "function";
 
     return (
       <div
-        className={`flex flex-col bg-gray-200 bg-opacity-10 p-3 gap-2 w-1/3 rounded-lg font-bold drop-shadow-lg border-t-4 ${colorClass} hover:drop-shadow-xl transition-transform ease-in-out duration-300`}
+        className={`relative flex flex-col bg-gray-200 bg-opacity-10 p-3 gap-2 w-1/3 rounded-lg font-bold drop-shadow-lg border-t-4 ${colorClass} hover:drop-shadow-xl transition-transform ease-in-out duration-300`}
       >
-        <span className="text-white text-xs sm:text-base">{label}</span>
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-white text-xs sm:text-base">{label}</span>
+          {hasInfo && (
+            <button
+              ref={(el) => {
+                if (el && typeof infoIndex === "number") {
+                  averageInfoButtonRefs.current.set(infoIndex, el);
+                }
+              }}
+              type="button"
+              className="text-white/80 hover:text-white transition-colors"
+              title="How this is calculated"
+              aria-label="How average grade is calculated"
+              onClick={() => onInfoToggle(infoIndex)}
+            >
+              <Info size={14} />
+            </button>
+          )}
+        </div>
         <div className="flex items-center gap-1">
           <span className="text-sm sm:text-lg" style={{ color: textColor }}>
             {value}
@@ -85,6 +132,22 @@ const StatsCard = ({
             </a>
           )}
         </div>
+        {hasInfo && showInfo && (
+          <div
+            ref={averageInfoRef}
+            className="absolute top-9 right-2 w-64 bg-gray-700 border border-gray-400 rounded-md p-3 text-xs text-gray-100 normal-case z-30"
+          >
+            <p>{averageGradeExplanation}</p>
+            <a
+              href="https://catalog.uta.edu/academicregulations/grades/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-blue-300 hover:text-blue-200 underline"
+            >
+              View UTA grading policy
+            </a>
+          </div>
+        )}
       </div>
     );
   };
@@ -100,13 +163,26 @@ const StatsCard = ({
       ) {
         setShowInfoBox(false);
       }
+
+      if (openAverageInfoIndex !== null) {
+        const currentButton = averageInfoButtonRefs.current.get(openAverageInfoIndex);
+        const clickedOutsideAveragePopover =
+          averageInfoRef.current &&
+          !averageInfoRef.current.contains(event.target as Node);
+        const clickedOutsideAverageButton =
+          !currentButton || !currentButton.contains(event.target as Node);
+
+        if (clickedOutsideAveragePopover && clickedOutsideAverageButton) {
+          setOpenAverageInfoIndex(null);
+        }
+      }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showInfoBox]);
+  }, [showInfoBox, openAverageInfoIndex]);
 
   // Check if multiple professors are selected
   const isComparingMode = selectedItems.size > 1;
@@ -190,9 +266,16 @@ const StatsCard = ({
                 )}
                 {aggregatedData[0]?.course_gpa && (
                   <InfoBox
-                    label="AVERAGE GRADE"
-                    value={Math.floor(aggregatedData[0].course_gpa * 25) + `%`}
+                    label="COURSE GPA"
+                    value={formatGpaValue(Number(aggregatedData[0].course_gpa))}
                     colorClass={colorClasses[4]}
+                    infoIndex={0}
+                    showInfo={openAverageInfoIndex === 0}
+                    onInfoToggle={(index) =>
+                      setOpenAverageInfoIndex((prev) =>
+                        prev === index ? null : index
+                      )
+                    }
                   />
                 )}
                 {aggregatedData[0]?.grades_count && (
@@ -258,9 +341,16 @@ const StatsCard = ({
                     )}
                     {sectionData?.course_gpa && (
                       <InfoBox
-                        label="AVERAGE GRADE"
-                        value={`${Math.floor(sectionData.course_gpa * 25)}%`}
+                        label="COURSE GPA"
+                        value={formatGpaValue(Number(sectionData.course_gpa))}
                         colorClass={colorClass}
+                        infoIndex={index + 1}
+                        showInfo={openAverageInfoIndex === index + 1}
+                        onInfoToggle={(toggleIndex) =>
+                          setOpenAverageInfoIndex((prev) =>
+                            prev === toggleIndex ? null : toggleIndex
+                          )
+                        }
                       />
                     )}
                   </div>
