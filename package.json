@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "next dev --turbo",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.9",
-    "@types/node": "20.16.13",
+    "@types/node": "^22",
     "@types/react": "18.3.11",
     "@types/react-dom": "^18",
     "@types/sqlite3": "^3.1.11",
