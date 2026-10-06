@@ -8,7 +8,7 @@ export default function Notification() {
 
   useEffect(() => {
     // Check if the notification has been dismissed before
-    const isDismissed = localStorage.getItem("notification-2024-2025-dismissed");
+    const isDismissed = localStorage.getItem("notification-2025-2026-dismissed");
     if (!isDismissed) {
       setIsVisible(true);
     }
@@ -16,7 +16,7 @@ export default function Notification() {
 
   const handleClose = () => {
     setIsVisible(false);
-    localStorage.setItem("notification-2024-2025-dismissed", "true");
+    localStorage.setItem("notification-2025-2026-dismissed", "true");
   };
 
   if (!isVisible) return null;
@@ -27,7 +27,7 @@ export default function Notification() {
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
             <p className="text-xs sm:text-sm font-medium">
-              <strong>New Data Available!</strong> Fall 2024 - Spring 2025 Grade Data is now available for viewing!
+              <strong>New Data Available!</strong> Fall 2025 - Summer 2026 Grade Data is now available for viewing!
             </p>
           </div>
           <button
